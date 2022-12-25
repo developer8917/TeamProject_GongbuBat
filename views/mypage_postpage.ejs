@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>공부밭</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <style>
+        body{
+            width: 1130px; 
+            margin: 0 auto;
+        }
+        .pcontainer {
+          display: flex;
+          max-width: 700px;
+          margin: 0 auto;
+        }
+        .profileinfos  {
+          margin: auto;
+          padding: 40px 0 20px 0;
+        }
+        .personalinfo  {
+          padding: 10px;
+        }
+        .personalhead {
+          padding-bottom: 20px;
+        }
+        .headinfo {
+          display: inline-block;
+        }
+        .space {
+          width: 50px;
+          display: inline-block;
+        }
+
+        .pbar {
+          list-style: none;
+          display: flex;
+          justify-content: space-evenly;
+        }
+        #plink {
+          text-decoration: none;
+          color: gray;
+        }
+        
+        #plink:hover {
+          color: #4AB186;
+          font-weight: bold;
+        }
+        #plink:active {
+          color: #4AB186;
+          font-weight: bold;
+        }
+        
+        
+    </style>
+  </head>
+  <body style="margin: auto;">
+    <%- include('nav.ejs') %>
+
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+
+    <div class="formbody">
+
+        <div class="pcontainer">
+          
+                <div class="profileinfos">
+                    <img src="/public/image/default_user.png" class="img-fluid rounded-start">
+                </div>
+
+                <div class="profileinfos">
+                    <div class="card-body">
+
+                      <div class="personalhead">
+                        <h1 class="headinfo"> <%= userSession.nickname %> </h1>
+                        <div class="space"></div>
+                        <a href="/changeprivacy">
+                          <button type="button" class="btn btn-primary headinfo" style="font-size: small; background-color: #F16A6E; border-color:#F16A6E;">개인정보수정</button>
+                        </a>
+                      </div>
+
+                      <ul>
+                        <li class="card-text personalinfo">아이디: <%= userSession.email %></li>
+                        <li class="card-text personalinfo">생년월일: <%= userSession.birth %></li>
+                        <li class="card-text personalinfo">지역: <%= userSession.region %></li>
+                        <li class="card-text personalinfo">태그: #<%= userSession.tag %></li>
+                      </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+            <hr id="line" class="my-1"/>
+
+            <div class="pbar">
+                    <li>
+                      <a id="plink" href="#">모임</a>
+                    </li>
+                    <li>
+                      <a id="plink" href="/mypage_postpage/<%= userSession.email %>">게시글</a>
+                    </li>
+                    <li>
+                      <a id="plink" href="/mypage_commentpage/<%= userSession.email %>">댓글</a>
+                    </li>
+                  </ul>
+            </div>    
+
+            <hr id="line" class="my-1"/>
+        
+            <%- include('mypage_post.ejs') %>
+        
+    </div>
+
+
+    <script>
+        
+    </script>
+
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+  </body>
+</html>
